@@ -4,6 +4,8 @@ export class Film {
   //
   // }
 
+  status: boolean = false;
+
   constructor(public filmId: string,
               public title: string,
               public image?: string,
@@ -13,7 +15,8 @@ export class Film {
               public plot?: string,
               public awards?: string,
               public directors?: string,
-              public rating?: string
+              public rating?: string,
+
   ) {
   }
 }

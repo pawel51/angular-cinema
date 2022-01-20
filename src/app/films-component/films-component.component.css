@@ -1,0 +1,50 @@
+table {
+  width: 90%;
+  border-collapse: collapse;
+  margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border: 4px solid black;
+  border-radius: 5px;
+}
+
+table,
+th,
+td {
+  border: 1px solid darkgray;
+  padding: 1em;
+}
+
+th {
+  background-color: gainsboro;
+  color: darkslategrey;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: large;
+}
+
+.selected {
+  background-color: #71ffb2;
+}
+
+.green {
+  color: rgb(29, 216, 12);
+}
+
+.red {
+  color: rgb(250, 4, 4);
+}
+
+.mat-icon {
+  font-size: 20px;
+}
+
+.cat-icon {
+  color: rgb(105, 33, 33);
+  font-size: 70px;
+}
+
+button {
+  margin-left: 10%;
+  margin-right: 10%;
+  float: right;
+}

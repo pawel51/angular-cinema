@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Film} from '../Film'
 import {Films} from '../films-moc'
 import {MatDialog} from "@angular/material/dialog";
@@ -16,11 +16,11 @@ export class FilmsComponentComponent implements OnInit {
   selectedFilm: Film | null = null;
   newFilm: Film | null = null;
 
-  constructor(public dialog:MatDialog) {
+  constructor(public dialog: MatDialog) {
     this.filmsList.forEach(el => {
       const keys = Object.keys(el)
       keys.forEach(key => {
-        if(!this.headers.includes(key)){
+        if (!this.headers.includes(key)) {
           this.headers.push(key);
         }
       })
@@ -31,19 +31,19 @@ export class FilmsComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSelect(note: Film): void{
+  onSelect(note: Film): void {
     this.selectedFilm = note;
   }
 
   openDialog(): void {
     let dialogRef = null;
     dialogRef = this.dialog.open(AddFilmComponent, {
-      width:'30%',
-      data:{title: '', filmId:''}
+      width: '30%',
+      data: {title: '', filmId: ''}
     })
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined){
-        if(result.title.length === 0 || result.filmId < 0){
+      if (result !== undefined) {
+        if (result.title.length === 0 || result.filmId < 0) {
           result.title = "film bez tytułu"
           result.filmId = "9999"
         }
@@ -51,6 +51,17 @@ export class FilmsComponentComponent implements OnInit {
         this.filmsList.push(this.newFilm);
       }
     })
+  }
+
+  deleteFilm(): void {
+    this.filmsList = this.filmsList.filter(obj => obj !== this.selectedFilm);
+
+  }
+
+
+  changeStatus(): void {
+    if (this.selectedFilm !== null)
+      this.selectedFilm.status = !this.selectedFilm.status;
   }
 
 

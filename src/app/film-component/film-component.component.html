@@ -1,1 +1,17 @@
-<p>film-component works!</p>
+<mat-card class="details">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{film?.title || ""}}</mat-card-title>
+    <mat-card-subtitle>{{film?.releaseDate || ""}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{film?.smallImage}}" alt="image">
+  <mat-card-content>
+    <p>
+      {{film?.plot || ""}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="editSelectedFilm()">EDIT</button>
+    <button mat-button color="warn" (click)="deleteSelectedFilm()">DELETE</button>
+  </mat-card-actions>
+</mat-card>

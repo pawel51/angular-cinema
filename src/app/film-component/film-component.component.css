@@ -1,0 +1,9 @@
+.details {
+  margin-left: 10%;
+  margin-top: 5%;
+  font-size: x-large;
+  border: solid darkslategray 1px;
+  width: 50%;
+  padding: 1%;
+  border-radius: 16px;
+}

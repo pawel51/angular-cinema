@@ -1,5 +1,5 @@
 <div className="justifyView">
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th *ngFor="let note_h of headers; let index=index;">
@@ -19,8 +19,7 @@
 
   <button mat-raised-button color="primary" (click)="openDialog()">ADD FILM</button>
 
-  <div class="details" *ngIf="selectedFilm!=null">
-    <div>{{selectedFilm.filmId}}</div>
-    <div>{{selectedFilm.title}}</div>
+  <div *ngIf="selectedFilm!=null">
+    <app-film-component [film]="selectedFilm" (changeFilmStatus)="changeStatus()" deleteNode="deleteFilm()" editNote="openDialog()"></app-film-component>
   </div>
 </div>
