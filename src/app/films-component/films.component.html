@@ -1,0 +1,25 @@
+<div className="justifyView">
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let note_h of headers; let index=index;">
+          <span class="theader">{{note_h}}</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let film of filmsList" [class.selected]="film===selectedFilm">
+
+        <td (mousedown)="onSelect(film)"><span class="tbody">{{film.filmId}}</span></td>
+        <td (mousedown)="onSelect(film)"><span>{{film.title}}</span></td>
+
+    </tr>
+    </tbody>
+  </table>
+
+  <button mat-raised-button color="primary" (click)="openDialog(true, false)">ADD FILM</button>
+
+  <div *ngIf="selectedFilm!=null">
+    <app-film-component [film]="selectedFilm" (changeFilmStatus)="changeStatus()" (deleteFilm)="deleteFilm()" (editFilm)="openDialog(false, true)"></app-film-component>
+  </div>
+</div>

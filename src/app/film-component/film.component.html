@@ -6,8 +6,20 @@
   </mat-card-header>
   <img mat-card-image src="{{film?.smallImage}}" alt="image">
   <mat-card-content>
-    <p>
+    <p>Plot:
       {{film?.plot || ""}}
+    </p>
+    <p>Rating:
+      {{film?.rating || ""}}
+    </p>
+    <p>Runtime:
+      {{film?.runtimeStr || ""}}
+    </p>
+    <p>Awards:
+      {{film?.awards || ""}}
+    </p>
+    <p>Directors
+      {{film?.directors || ""}}
     </p>
   </mat-card-content>
   <mat-card-actions>

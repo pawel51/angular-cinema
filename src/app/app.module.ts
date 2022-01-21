@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FilmComponentComponent } from './film-component/film-component.component';
-import { FilmsComponentComponent } from './films-component/films-component.component';
+import { FilmComponent } from './film-component/film.component';
+import { FilmsComponent } from './films-component/films.component';
 import { AddFilmComponent } from './add-film/add-film.component';
 import { EditFilmComponent } from './edit-film/edit-film.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -18,14 +18,30 @@ import {MatListModule} from "@angular/material/list";
 import {HttpClientModule} from "@angular/common/http";
 import {MatSelectModule} from "@angular/material/select";
 import {MatMenuModule} from "@angular/material/menu";
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import {RouterModule} from "@angular/router";
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ShowComponent } from './show/show.component';
+import { ShowsComponent } from './shows/shows.component';
+import { AddShowComponent } from './add-show/add-show.component';
+import { EditShowComponent } from './edit-show/edit-show.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilmComponentComponent,
-    FilmsComponentComponent,
+    FilmComponent,
+    FilmsComponent,
     AddFilmComponent,
-    EditFilmComponent
+    EditFilmComponent,
+    HomeComponent,
+    CalendarComponent,
+    ShowComponent,
+    ShowsComponent,
+    AddShowComponent,
+    EditShowComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +60,12 @@ import {MatMenuModule} from "@angular/material/menu";
     HttpClientModule,
     MatSelectModule,
     MatMenuModule,
+    AppRoutingModule,
+    RouterModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

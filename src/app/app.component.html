@@ -1,4 +1,9 @@
-<div class="content">
-  {{title}}
+<div class="mat-app-background basic-container">
+  <button mat-button routerLink="/home">Home</button>
+  <button mat-button routerLink="/allFilms">All Films</button>
+  <button mat-button routerLink="/allShows">All Shows</button>
+  <button mat-button routerLink="/calendar">Calendar</button>
 </div>
-<app-films-component></app-films-component>
+
+<router-outlet></router-outlet>
+

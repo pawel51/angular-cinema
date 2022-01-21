@@ -1,0 +1,53 @@
+<div className="justifyView">
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>
+        <span class="theader">show id</span>
+      </th>
+      <th>
+        <span class="theader">film name</span>
+      </th>
+      <th>
+        <span class="theader">film image</span>
+      </th>
+      <th>
+        <span class="theader">date</span>
+      </th>
+      <th>
+        <span class="theader">hours</span>
+      </th>
+      <th>
+        <span class="theader">room no.</span>
+      </th>
+      <th>
+        <span class="theader">sold tickets</span>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let show of showsList" [class.selected]="show===selectedShow">
+
+      <td (mousedown)="onSelect(show)"><span class="tbody">{{show.showId}}</span></td>
+      <td (mousedown)="onSelect(show)"><span>{{show.film.title}}</span></td>
+      <td (mousedown)="onSelect(show)"><img src="{{show.film.smallImage}}"/></td>
+      <td (mousedown)="onSelect(show)"><span>{{show.date}}</span></td>
+      <td (mousedown)="onSelect(show)">
+        <span *ngFor="let hour of show.hours" class="hour">{{hour}}</span>
+      </td>
+      <td (mousedown)="onSelect(show)"><span>{{show.roomId}}</span></td>
+      <td (mousedown)="onSelect(show)" *ngFor="let key of show.soldTickets">
+        <span>{{show.soldTickets[key]}}</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+<!--  <button mat-raised-button color="primary" (click)="openDialog(true, false)">ADD FILM</button>-->
+
+<!--  <div *ngIf="selectedFilm!=null">-->
+<!--    <app-film-component [film]="selectedFilm" (changeFilmStatus)="changeStatus()" (deleteFilm)="deleteFilm()" (editFilm)="openDialog(false, true)"></app-film-component>-->
+<!--  </div>-->
+
+</div>

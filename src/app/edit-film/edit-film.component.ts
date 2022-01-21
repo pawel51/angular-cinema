@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Film} from "../Film";
 
 @Component({
   selector: 'app-edit-film',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditFilmComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<EditFilmComponent>, @Inject(MAT_DIALOG_DATA) public data: Film) { }
 
   ngOnInit(): void {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }

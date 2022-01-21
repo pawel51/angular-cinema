@@ -1,0 +1,40 @@
+<h1></h1>
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <button mat-button color="primary">
+        <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+          Previous
+        </div>
+      </button>
+
+      <button mat-button color="primary">
+        <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+          This month
+        </div>
+      </button>
+
+      <button mat-button color="primary">
+        <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+          Next
+        </div>
+      </button>
+
+    </div>
+  </div>
+
+
+</div>
+<div class="col-md-4">
+  <h3>Month: {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+</div>
+<br />
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events" [refresh]="refresh" [weekStartsOn]=1 [weekendDays]="weekendDays" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)" locale="en">
+
+  </mwl-calendar-month-view>
+
+</div>
+
+
+<h1>Hello calendar</h1>
