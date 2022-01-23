@@ -33,21 +33,21 @@
       <td (mousedown)="onSelect(show)"><span>{{show.film.title}}</span></td>
       <td (mousedown)="onSelect(show)"><img src="{{show.film.smallImage}}"/></td>
       <td (mousedown)="onSelect(show)"><span>{{show.date}}</span></td>
-      <td (mousedown)="onSelect(show)">
-        <span *ngFor="let hour of show.hours" class="hour">{{hour}}</span>
+      <td (mousedown)="onSelect(show)" >
+        <span *ngFor="let hour of show.hours" class="hour"><span>{{hour}}</span></span>
       </td>
       <td (mousedown)="onSelect(show)"><span>{{show.roomId}}</span></td>
-      <td (mousedown)="onSelect(show)" *ngFor="let key of show.soldTickets">
-        <span>{{show.soldTickets[key]}}</span>
+      <td (mousedown)="onSelect(show)" >
+        <span *ngFor="let key of show.soldTickets">{{show.soldTickets[key]}}</span>
       </td>
     </tr>
     </tbody>
   </table>
 
-<!--  <button mat-raised-button color="primary" (click)="openDialog(true, false)">ADD FILM</button>-->
+  <button mat-raised-button color="primary" (click)="openDialog(true, false)">ADD SHOW</button>
 
-<!--  <div *ngIf="selectedFilm!=null">-->
-<!--    <app-film-component [film]="selectedFilm" (changeFilmStatus)="changeStatus()" (deleteFilm)="deleteFilm()" (editFilm)="openDialog(false, true)"></app-film-component>-->
-<!--  </div>-->
+  <div *ngIf="selectedShow!=null">
+    <app-show-component [show]="selectedShow" (deleteShow)="deleteShow()" (editShow)="openDialog(false, true)"></app-show-component>
+  </div>
 
 </div>

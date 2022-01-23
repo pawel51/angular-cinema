@@ -14,7 +14,7 @@ export class ShowsService {
   showFilmMap: Map<string, string> = new Map<string, string>();
 
   public getShows(): Observable<Show[]> {
-    this.getFilms();
+    // this.getFilms();
     return of(this.shows);
   }
 
@@ -23,6 +23,8 @@ export class ShowsService {
   }
 
   constructor(private http: FilmsHttpService) {
+    this.films = []
+    this.shows = []
     this.http.getFilms().subscribe(list => {
       this.films = list;
     });
@@ -34,4 +36,33 @@ export class ShowsService {
       })
     })
   }
+
+  addShow(show: Show) {
+    this.shows.push(show);
+    // this.shows = this.shows.sort((a, b) => a.title > b.title? 1 : -1);
+  }
+
+  editShow(show: Show, selected: Show) {
+    this.shows.forEach((obj, index, tab) => {
+      if (obj === selected) {
+        tab[index] = show;
+      }
+    });
+    // this.shows = this.shows.sort((a, b) => a.title > b.title? 1 : -1);
+  }
+
+  deleteShow(show: Show) {
+    this.shows = this.shows.filter(obj => obj !== show);
+    // this.shows = this.shows.sort((a, b) => a.title > b.title? 1 : -1);
+  }
+
+
+
+
+
+
+
+
+
+
 }

@@ -11,7 +11,7 @@ const routes:Routes = [
   { path: 'allFilms', component: FilmsComponent},
   { path: 'allShows', component: ShowsComponent },
   { path: 'calendar', component: CalendarComponent},
-  { path: 'dayFilms/:date', component: FilmsComponent},
+  { path: 'dayFilms/:date', component: ShowsComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'}
 ]
 

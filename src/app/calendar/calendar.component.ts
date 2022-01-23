@@ -4,6 +4,7 @@ import {Subject} from "rxjs";
 import {Router} from "@angular/router";
 import {FilmsService} from "../films.service";
 import {Film} from "../Film";
+import {ShowsService} from "../shows.service";
 
 
 @Component({
@@ -31,7 +32,7 @@ export class CalendarComponent implements OnInit {
   events: CalendarEvent[] = []
 
 
-  constructor(private router: Router, private filmList: FilmsService) {}
+  constructor(private router: Router, private filmList: FilmsService, private showList: ShowsService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     console.log(date);
@@ -52,9 +53,15 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filmList.getFilms().subscribe(list => list.forEach(film => {
-      const event: CalendarEvent = { title: '', start: new Date()}
-      event.title = film.title;
+    // this.filmList.getFilms().subscribe(list => list.forEach(film => {
+    //   const event: CalendarEvent = { title: '', start: new Date()}
+    //   event.title = film.title;
+    //   event.start = ;
+    //   this.events.push(event);
+    // }))
+    this.showList.getShows().subscribe(list => list.forEach(show => {
+      const event: CalendarEvent = { title: '', start: new Date(show.date)}
+      event.title = show.film.title;
       this.events.push(event);
     }))
   }

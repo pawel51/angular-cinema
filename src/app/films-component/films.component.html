@@ -2,8 +2,32 @@
   <table class="table">
     <thead>
       <tr>
-        <th *ngFor="let note_h of headers; let index=index;">
-          <span class="theader">{{note_h}}</span>
+        <th>
+          <span class="theader">Id</span>
+        </th>
+        <th>
+          <span class="theader">Title</span>
+        </th>
+        <th>
+          <span class="theader">Image</span>
+        </th>
+        <th>
+          <span class="theader">Release Date</span>
+        </th>
+        <th>
+          <span class="theader">Runtime </span>
+        </th>
+        <th>
+          <span class="theader">Plot</span>
+        </th>
+        <th>
+          <span class="theader">Awards</span>
+        </th>
+        <th>
+          <span class="theader">Directors</span>
+        </th>
+        <th>
+          <span class="theader">Rating</span>
         </th>
       </tr>
     </thead>
@@ -12,6 +36,13 @@
 
         <td (mousedown)="onSelect(film)"><span class="tbody">{{film.filmId}}</span></td>
         <td (mousedown)="onSelect(film)"><span>{{film.title}}</span></td>
+        <td (mousedown)="onSelect(film)"><img src="{{film.smallImage}}" /></td>
+        <td (mousedown)="onSelect(film)"><span>{{film.releaseDate}}</span></td>
+        <td (mousedown)="onSelect(film)"><span>{{film.runtimeStr}}</span></td>
+        <td (mousedown)="onSelect(film)"><span>{{film.plot}}</span></td>
+        <td (mousedown)="onSelect(film)"><span>{{film.awards}}</span></td>
+        <td (mousedown)="onSelect(film)"><span>{{film.directors}}</span></td>
+        <td (mousedown)="onSelect(film)"><span>{{film.rating}}</span></td>
 
     </tr>
     </tbody>

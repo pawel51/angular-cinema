@@ -48,3 +48,7 @@ button {
   margin-right: 10%;
   float: right;
 }
+
+.hour {
+  padding: 10px;
+}

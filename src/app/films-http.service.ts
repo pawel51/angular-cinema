@@ -16,7 +16,7 @@ export class FilmsHttpService {
   getFilms(): Observable<Film[]>{
     return this.http.get<Film[]>(this.url + '/films').pipe(map((films: Film[]) =>
       films.map(film => {
-        return new Film(film.filmId, film.title);
+        return new Film(film.filmId, film.title, film.image, film.smallImage, film.releaseDate, film.runtimeStr, film.plot, film.awards, film.directors, film.rating);
       })));
   }
 

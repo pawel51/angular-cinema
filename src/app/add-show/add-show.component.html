@@ -1,1 +1,20 @@
-<p>add-show works!</p>
+<h1 mat-dialog-title>
+  Add a new show</h1>
+
+<div mat-dialog-content>
+  <form #f="ngForm">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose Film</mat-label>
+      <mat-select>
+        <option *ngFor="let film of data.filmList" [value]="film.filmId" selected="{{film.filmId === data.show.filmId}}"><h4>{{film.title}}</h4><img src="{{film.smallImage}}"/></option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Hours</mat-label>
+      <input matInput type="text" [(ngModel)]="data.show.hours" name="awards">
+    </mat-form-field>
+  </form>
+</div>
