@@ -1,1 +1,35 @@
-<p>edit-show works!</p>
+<h1 mat-dialog-title>
+  Edit film</h1>
+<div mat-dialog-content >
+  <form #f="ngForm" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Title </mat-label>
+      <input matInput [(ngModel)]="data.show.showId" name="title" required minlength="3">
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Hours</mat-label>
+      <input matInput type="text" [(ngModel)]="data.show.hours" name="releaseDate">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" [(ngModel)]="data.show.date" name="runtimeStr">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Room id</mat-label>
+      <input matInput type="text" [(ngModel)]="data.show.roomId" name="awards">
+    </mat-form-field>
+
+
+
+    <div mat-dialog-actions>
+      <button mat-button *ngIf="!f.valid" disabled cdkFocusInitial>Ok</button>
+      <button mat-button [mat-dialog-close]="data" *ngIf="f.valid" cdkFocusInitial>Ok</button>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+
+    </div>
+  </form>
+</div>

@@ -7,6 +7,10 @@ import {Film} from "../Film";
 import {EditShowComponent} from "../edit-show/edit-show.component";
 import {AddShowComponent} from "../add-show/add-show.component";
 import {AddShowModel} from "../AddShowModel";
+import {BuyTicketModel} from "../BuyTicketModel";
+import {BuyTicketComponent} from "../buy-ticket/buy-ticket.component";
+
+
 
 @Component({
   selector: 'app-shows',
@@ -55,9 +59,9 @@ export class ShowsComponent implements OnInit {
       });
     });
 
-    this.shows.getFilms().subscribe(list => {
-      this.filmList = list;
-    })
+    // this.shows.getFilms().subscribe(list => {
+    //   this.filmList = list;
+    // })
   }
 
   onSelect(show: Show): void {
@@ -89,34 +93,39 @@ export class ShowsComponent implements OnInit {
     this._date = value;
   }
 
-  openDialog(add: boolean, edit: boolean): void {
+  openDialog(add: boolean, edit: boolean, buy: boolean): void {
     let dialogRef = null;
 
     if (add) {
       dialogRef = this.dialog.open(AddShowComponent, {
         width: '30%',
-        data: new AddShowModel(this.selectedShow, this.filmList)
+        data: new AddShowModel()
       })
     } else if (edit) {
       dialogRef = this.dialog.open(EditShowComponent, {
         width: '30%',
-        data: {show: this.selectedShow, filmList: this.filmList}
+        data: new AddShowModel(this.selectedShow, this.filmList)
       })
-    } else
+    } else if(buy){
+      dialogRef = this.dialog.open(BuyTicketComponent, {
+        width: '30%',
+        data: new BuyTicketModel(this.selectedShow, this.filmList)
+      })
+    }
+
+    else
       return;
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        if (result.title.length === 0 || result.filmId < 0) {
-          result.title = "film bez tytułu"
-          result.filmId = "9999"
-        }
 
         let soldTickets: Map<string, number> = new Map<string, number>();
-        result.hours.forEach(hour => {
+
+        result.show.hours = result.show.hours.split(';');
+        result.show.hours.forEach(hour => {
           soldTickets.set(hour, 0);
         })
-        this.newShow = new Show(result.showId, result.filmId, result.date, result.hours, result.roomId, soldTickets);
+        this.newShow = new Show(result.show.showId, result.show.filmId, result.show.date, result.show.hours, result.show.roomId, soldTickets);
 
         if(add){
           this.shows.addShow(this.newShow);
@@ -129,6 +138,9 @@ export class ShowsComponent implements OnInit {
               this.selectedShow = tab[index];
             }
           })
+        }
+        else if(buy){
+
         }
 
       }

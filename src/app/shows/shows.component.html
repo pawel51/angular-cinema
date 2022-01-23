@@ -44,10 +44,10 @@
     </tbody>
   </table>
 
-  <button mat-raised-button color="primary" (click)="openDialog(true, false)">ADD SHOW</button>
+  <button mat-raised-button color="primary" (click)="openDialog(true,false,false)">ADD SHOW</button>
 
   <div *ngIf="selectedShow!=null">
-    <app-show-component [show]="selectedShow" (deleteShow)="deleteShow()" (editShow)="openDialog(false, true)"></app-show-component>
+    <app-show-component [show]="selectedShow" (buyTickerEvent)="openDialog(false, false, true)" (deleteShow)="deleteShow()" (editShow)="openDialog(false,true,false)"></app-show-component>
   </div>
 
 </div>

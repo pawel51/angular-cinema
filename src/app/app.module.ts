@@ -28,6 +28,7 @@ import { ShowComponent } from './show/show.component';
 import { ShowsComponent } from './shows/shows.component';
 import { AddShowComponent } from './add-show/add-show.component';
 import { EditShowComponent } from './edit-show/edit-show.component';
+import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { EditShowComponent } from './edit-show/edit-show.component';
     ShowComponent,
     ShowsComponent,
     AddShowComponent,
-    EditShowComponent
+    EditShowComponent,
+    BuyTicketComponent
   ],
   imports: [
     BrowserModule,

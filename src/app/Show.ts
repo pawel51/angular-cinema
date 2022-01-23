@@ -31,12 +31,12 @@ export class Show {
     this._film = value;
   }
 
-  constructor(public showId: string,
-              public filmId: string,
-              public date: string,
-              public hours: string[],
-              public roomId: string,
-              public soldTickets: Map<string, number>
+  constructor(public showId?: string,
+              public filmId?: string,
+              public date?: string,
+              public hours?: string[],
+              public roomId?: string,
+              public soldTickets?: Map<string, number>
               ) {
     this._dateObj = new Date(this.date);
   }

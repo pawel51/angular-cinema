@@ -37,8 +37,9 @@ export class ShowsService {
     })
   }
 
-  addShow(show: Show) {
-    this.shows.push(show);
+  addShow(show: Show){
+
+    this.http.addShow(show).subscribe(show => this.shows.push(show));
     // this.shows = this.shows.sort((a, b) => a.title > b.title? 1 : -1);
   }
 

@@ -22,8 +22,10 @@ export class AddShowModel {
     this._filmList = value;
   }
 
-  constructor(show: Show, filmList: Film[]) {
-    this._show = show;
-    this._filmList = filmList;
+  constructor(show?: Show, filmList?: Film[]) {
+    this._show = show ?? new Show();
+    this._filmList = filmList ?? [];
   }
+
+
 }

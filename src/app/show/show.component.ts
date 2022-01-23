@@ -11,6 +11,7 @@ export class ShowComponent implements OnInit {
   @Output() changeShowStatus: EventEmitter<void> = new EventEmitter();
   @Output() deleteShow: EventEmitter<void> = new EventEmitter();
   @Output() editShow: EventEmitter<void> = new EventEmitter();
+  @Output() buyTickerEvent: EventEmitter<void> = new EventEmitter();
 
 
   constructor() { }
@@ -30,4 +31,7 @@ export class ShowComponent implements OnInit {
     this.editShow.emit();
   }
 
+  buyTicker(): void {
+    this.buyTickerEvent.emit();
+  }
 }

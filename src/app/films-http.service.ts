@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {catchError, Observable, of} from "rxjs";
 import {map} from 'rxjs/operators'
 import {Film} from "./Film";
 import {Show} from "./Show";
@@ -26,4 +26,32 @@ export class FilmsHttpService {
         return new Show(show.showId, show.filmId, show.date, show.hours, show.roomId, show.soldTickets);
       })));
   }
+
+  addShow(show: Show): Observable<Show>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http.post<Show>("/show", show, httpOptions).pipe(
+      catchError(this.handleError<Show>("post show"))
+    );
+  }
+
+  editShow(show: Show): Observable<Show>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http.post<Show>("/show"+show.showId, show, httpOptions).pipe(
+      catchError(this.handleError<Show>("put show "+show.showId))
+    );
+  }
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(operation + ' failed' + error);
+      return of(result as T);
+    };
+  }
+
+
 }
